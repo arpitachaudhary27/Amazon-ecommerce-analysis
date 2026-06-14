@@ -1,0 +1,187 @@
+Enter password: ***********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 13
+Server version: 8.4.9 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2026, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> SHOWS DATABASES;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SHOWS DATABASES' at line 1
+mysql> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| amazon_project     |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
+| world              |
++--------------------+
+6 rows in set (0.07 sec)
+
+mysql> SELECT
+    -> SUM(final_price)
+    -> FROM orders;
+ERROR 1046 (3D000): No database selected
+mysql> select SUM(final_price) FROM orders;
+ERROR 1046 (3D000): No database selected
+mysql> USE amazon_project;
+Database changed
+mysql> SHOW TABLES;
++--------------------------+
+| Tables_in_amazon_project |
++--------------------------+
+| orders                   |
+| orders_test              |
++--------------------------+
+2 rows in set (0.03 sec)
+
+mysql> SELECT SUM(final_price)
+    -> FROM orders;
++-------------------+
+| SUM(final_price)  |
++-------------------+
+| 9938876984.899958 |
++-------------------+
+1 row in set (1.52 sec)
+
+mysql> SELECT
+    -> brand,
+    -> SUM(final_price) revenue
+    -> FROM orders
+    -> GROUP BY brand
+    -> ORDER BY revenue DESC
+    -> LIMIT 10;
++---------+-------------------+
+| brand   | revenue           |
++---------+-------------------+
+| Lenovo  | 834698265.1300116 |
+| Sony    | 832227170.8400061 |
+| Samsung | 831559760.4099945 |
+| LG      | 831268886.5099925 |
+| Adidas  | 828076829.7799908 |
+| Boat    | 827732261.8699986 |
+| HP      | 826993652.6799951 |
+| Nike    |  826645590.460006 |
+| Zara    | 826028195.5200062 |
+| Apple   |  826003980.430001 |
++---------+-------------------+
+10 rows in set (1.83 sec)
+
+mysql> SELECT
+    -> category,
+    -> SUM(final_price)
+    -> FROM orders
+    -> GROUP BY category;
++-------------+--------------------+
+| category    | SUM(final_price)   |
++-------------+--------------------+
+| Electronics |  6579047983.299879 |
+| Sports      | 1124849199.3300068 |
+| Beauty      |  375951719.9100048 |
+| Home        | 1529977638.3200028 |
+| Clothing    |  329050444.0399974 |
++-------------+--------------------+
+5 rows in set (1.84 sec)
+
+mysql> SELECT
+    -> brand,
+    -> AVG(rating)
+    -> FROM orders
+    -> GROUP BY brand
+    -> ORDER BY AVG(rating) DESC;
++---------+--------------------+
+| brand   | AVG(rating)        |
++---------+--------------------+
+| Sony    | 3.9300674421112123 |
+| Samsung | 3.9298641288083314 |
+| Lenovo  | 3.9283079169758555 |
+| H&M     | 3.9278224045042065 |
+| Zara    |  3.927728376072462 |
+| Boat    |  3.927551289425784 |
+| Apple   | 3.9272573057905187 |
+| Adidas  |  3.927091023135743 |
+| HP      | 3.9267109674329364 |
+| LG      |  3.926013924322277 |
+| Nike    | 3.9252508521772733 |
+| Puma    |  3.923064321331621 |
++---------+--------------------+
+12 rows in set (1.76 sec)
+
+mysql> SELECT
+    -> COUNT(*) AS total_orders,
+    ->
+    -> SUM(CASE
+    -> WHEN is_returned=1
+    -> THEN 1
+    -> ELSE 0
+    -> END) returned_orders
+    ->
+    -> FROM orders;
++--------------+-----------------+
+| total_orders | returned_orders |
++--------------+-----------------+
+|      1000000 |          115990 |
++--------------+-----------------+
+1 row in set (0.98 sec)
+
+mysql> SELECT
+    -> location,
+    -> SUM(final_price)
+    -> FROM orders
+    -> GROUP BY location;
++-----------+--------------------+
+| location  | SUM(final_price)   |
++-----------+--------------------+
+| Bangalore | 1990173998.5999765 |
+| Delhi     | 2000521360.2999635 |
+| Chennai   | 1981129736.8100119 |
+| Mumbai    | 1988987898.7200058 |
+| Hyderabad |  1978063990.469975 |
++-----------+--------------------+
+5 rows in set (1.82 sec)
+
+mysql> SELECT
+    -> payment_method,
+    -> COUNT(*)
+    -> FROM orders
+    -> GROUP BY payment_method;
++------------------+----------+
+| payment_method   | COUNT(*) |
++------------------+----------+
+| UPI              |   249951 |
+| Credit Card      |   250324 |
+| Debit Card       |   249337 |
+| Cash on Delivery |   250388 |
++------------------+----------+
+4 rows in set (1.81 sec)
+
+mysql> SELECT
+    -> MONTH(purchase_date) month,
+    -> SUM(final_price)
+    -> FROM orders
+    -> GROUP BY month;
++-------+-------------------+
+| month | SUM(final_price)  |
++-------+-------------------+
+|     3 |  860629116.070002 |
+|    12 | 850208661.0399814 |
+|     4 | 812934330.9000101 |
+|     5 | 840816770.6300061 |
+|     7 | 843177290.1799875 |
+|     2 | 760034992.9900032 |
+|    11 | 817566942.7099956 |
+|     8 |  846776656.299995 |
+|     9 | 803900490.2300062 |
+|     6 | 810825290.7399988 |
+|     1 |  846202503.610002 |
+|    10 | 845803939.5000064 |
++-------+-------------------+
+12 rows in set (1.30 sec)
