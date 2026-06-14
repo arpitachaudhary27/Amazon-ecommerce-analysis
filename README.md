@@ -266,7 +266,7 @@ Three interactive dashboards were created using Power BI.
 
 ### Customer Dashboard
 
-![Customers](Power%20BI%20visualization/customers.png)
+![Customers]Power BI visualization/Customers.png
 
 ---
 
