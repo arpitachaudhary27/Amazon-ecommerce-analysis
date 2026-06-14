@@ -1,6 +1,7 @@
 # Amazon-ecommerce-analysis
 
 ##📋 Project Overview
+
 This project presents an end-to-end data analysis of Amazon sales data, covering the full pipeline from raw data collection to interactive dashboard creation. The goal is to uncover meaningful insights about customer behavior, product performance, revenue trends, and operational efficiency.
 
 ##🗂️ Project Workflow
