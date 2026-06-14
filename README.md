@@ -266,7 +266,7 @@ Three interactive dashboards were created using Power BI.
 
 ### Customer Dashboard
 
-![Customers]Power BI visualization/Customers.png
+![Customers](https://raw.githubusercontent.com/arpitachaudhary27/Amazon-ecommerce-analysis/main/Power%20BI%20visualization/Customers.png)
 
 ---
 
