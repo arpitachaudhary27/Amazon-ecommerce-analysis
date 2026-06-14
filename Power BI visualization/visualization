@@ -1,1 +1,17 @@
+# Power BI Dashboard
 
+The original Power BI (.pbix) file is not included because it exceeds GitHub's file size limit.
+
+Dashboard screenshots are available in the `images` folder.
+
+The dashboard was created using:
+- Power BI Desktop
+- SQL
+- Excel
+- Python (Jupyter Notebook)
+
+Features:
+- Executive Overview
+- Product Analysis
+- Customer Analysis
+- Sales Performance
