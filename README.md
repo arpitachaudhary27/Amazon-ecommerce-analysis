@@ -258,11 +258,13 @@ Three interactive dashboards were created using Power BI.
 
 ### Dashboard Overview
 
-![Overview](Power%20BI%20visualization/overview.png)
+![Overview](https://raw.githubusercontent.com/arpitachaudhary27/Amazon-ecommerce-analysis/main/Power%20BI%20visualization/Overview_page.png)
+
 
 ### Product Dashboard
 
-![Products](Power%20BI%20visualization/products.png)
+![Products](https://raw.githubusercontent.com/arpitachaudhary27/Amazon-ecommerce-analysis/main/Power%20BI%20visualization/Products.png)
+
 
 ### Customer Dashboard
 
